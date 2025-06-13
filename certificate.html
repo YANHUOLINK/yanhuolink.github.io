@@ -202,35 +202,10 @@
 
 <script>
   function generateImage() {
-    const element = document.getElementById("capture");
-
-    // 获取内容区域边界尺寸
-    const rect = element.getBoundingClientRect();
-
-    html2canvas(element, {
-      useCORS: true,
-      scrollX: 0,
-      scrollY: 0,
-      width: rect.width,
-      height: rect.height,
-      windowWidth: document.body.scrollWidth,
-      windowHeight: document.body.scrollHeight,
-      backgroundColor: null,
-    }).then(canvas => {
-      const croppedCanvas = document.createElement("canvas");
-      const ctx = croppedCanvas.getContext("2d");
-
-      // 设置 canvas 尺寸为实际内容尺寸
-      croppedCanvas.width = rect.width;
-      croppedCanvas.height = rect.height;
-
-      // 绘制裁剪后的图像
-      ctx.drawImage(canvas, 0, 0, rect.width, rect.height, 0, 0, rect.width, rect.height);
-
-      // 下载图片
+    html2canvas(document.querySelector("#capture"), { useCORS: true }).then(canvas => {
       const link = document.createElement('a');
-      link.download = 'certificate_trimmed.png';
-      link.href = croppedCanvas.toDataURL();
+      link.download = 'certificate.png';
+      link.href = canvas.toDataURL();
       link.click();
     });
   }
