@@ -2,29 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Editable Certificate</title>
+  <title>Certificate of Filing</title>
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
   <style>
     body {
-      font-family: "Times New Roman", serif;
-      background: #eee;
-      padding: 30px;
       margin: 0;
+      padding: 30px;
+      background: #eee;
+      font-family: "Times New Roman", serif;
     }
     #capture {
       width: 816pt;
-      background: white;
+      margin: auto;
       padding: 60pt 70pt;
+      background: white;
       box-sizing: border-box;
-      margin: 0 auto;
-      position: relative;
-    }
-    .header, .section-title, .company-info, .content, .dates, .footer, .note, .contact {
-      margin-bottom: 20pt;
     }
     [contenteditable="true"] {
-      outline: 1px dashed #ccc;
-      padding: 2px;
+      outline: none;
     }
     .header {
       display: flex;
@@ -40,76 +35,163 @@
     }
     .section-title {
       text-align: center;
+      margin: 20pt 0 0;
       font-weight: bold;
     }
-    .section-title .title-main { font-size: 16pt; }
-    .section-title .title-sub { font-size: 14pt; text-transform: uppercase; }
-    .section-title .title-sub2 { font-size: 12pt; text-transform: uppercase; font-weight: normal; }
-    .company-info { text-align: center; }
-    .company-info .name { font-size: 16pt; font-weight: bold; }
-    .company-info .id { font-size: 14pt; }
-    .content { font-size: 12pt; line-height: 18pt; text-align: justify; }
-    .dates { font-size: 12pt; line-height: 16pt; }
-    .footer { display: flex; justify-content: space-between; }
+    .section-title .title-main {
+      font-size: 16pt;
+    }
+    .section-title .title-sub {
+      font-size: 14pt;
+      text-transform: uppercase;
+      margin-top: 10pt;
+    }
+    .section-title .title-sub2 {
+      font-size: 12pt;
+      text-transform: uppercase;
+      margin-top: 5pt;
+      font-weight: normal;
+    }
+    .company-info {
+      text-align: center;
+      margin-top: 12pt;
+    }
+    .company-info .name {
+      font-size: 16pt;
+      font-weight: bold;
+    }
+    .company-info .id {
+      font-size: 14pt;
+      margin-top: 4pt;
+    }
+    .content {
+      font-size: 12pt;
+      line-height: 18pt;
+      text-align: justify;
+      margin-top: 40pt;
+    }
+    .dates {
+      font-size: 12pt;
+      line-height: 16pt;
+      margin-top: 40pt;
+    }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60pt;
+    }
     .footer .stamp {
-      width: 100pt; height: 100pt;
-      background: url('https://yanhuolink.github.io/file.jpg') center center no-repeat;
+      width: 100pt;
+      height: 100pt;
+      background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...') center center no-repeat;
       background-size: contain;
     }
-    .note { font-size: 10pt; font-style: italic; text-align: center; line-height: 12pt; }
-    .contact { display: flex; justify-content: space-between; font-size: 10pt; line-height: 12pt; }
-    .btn-download { text-align: center; margin-top: 30px; }
-    button { padding: 10px 20px; font-size: 14pt; cursor: pointer; }
+    .footer .sign {
+      font-size: 12pt;
+      text-align: right;
+      line-height: 14pt;
+    }
+    .note {
+      font-size: 10pt;
+      font-style: italic;
+      text-align: center;
+      margin-top: 50pt;
+      line-height: 12pt;
+    }
+    .note a {
+      color: black;
+      text-decoration: none;
+    }
+    .contact {
+      display: flex;
+      justify-content: space-between;
+      font-size: 10pt;
+      line-height: 12pt;
+      margin-top: 20pt;
+    }
+    .btn-download {
+      text-align: center;
+      margin-top: 30px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 14pt;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <div id="capture">
-    <div class="header">
-      <div contenteditable="true">Corporations Section<br>P.O. Box 13697<br>Austin, Texas 78711‑3697</div>
-      <div contenteditable="true" style="text-align: right;">Hope Andrade<br>Secretary of State</div>
+
+<div id="capture">
+  <div class="header">
+    <div contenteditable="true">
+      Corporations Section<br>
+      P.O. Box 13697<br>
+      Austin, Texas 78711‑3697
     </div>
-    <div class="seal">
-      <img src="https://yanhuolink.github.io/file.jpg" alt="Seal">
-    </div>
-    <div class="section-title">
-      <div class="title-main" contenteditable="true">Office of the Secretary of State</div>
-      <div class="title-sub" contenteditable="true">CERTIFICATE OF FILING</div>
-      <div class="title-sub2" contenteditable="true">Of</div>
-    </div>
-    <div class="company-info">
-      <div class="name" contenteditable="true">B.O.C HOLDINGS LLC.</div>
-      <div class="id" contenteditable="true">802585679</div>
-    </div>
-    <div class="content" contenteditable="true">
-      The undersigned, as Secretary of State of Texas, hereby certifies that a Certificate of Amendment...
-    </div>
-    <div class="dates">
-      <div contenteditable="true">Dated: 11/12/2018</div>
-      <div contenteditable="true">Effective: 11/12/2018</div>
-    </div>
-    <div class="footer">
-      <div class="stamp"></div>
-      <div class="sign" contenteditable="true">
-        <br>Hope Andrade<br>Secretary of State
-      </div>
-    </div>
-    <div class="note">Come visit us on the internet at <a href="http://www.sos.state.tx.us">http://www.sos.state.tx.us</a></div>
-    <div class="contact">
-      <div contenteditable="true">Phone: …</div>
-      <div contenteditable="true">Fax: … TID: …</div>
-      <div contenteditable="true" style="text-align:right">Dial: … Document: …</div>
+    <div contenteditable="true" style="text-align: right;">
+      Hope Andrade<br>
+      Secretary of State
     </div>
   </div>
-  <div class="btn-download"><button onclick="generateImage()">生成图片</button></div>
-  <script>
-    function generateImage() {
-      html2canvas(document.querySelector("#capture"), { useCORS:true }).then(canvas => {
-        let link = document.createElement('a');
-        link.download = 'certificate.png';
-        link.href = canvas.toDataURL();
-        link.click();
-      });
-    }
-  </script>
+
+  <div class="seal">
+    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Seal">
+  </div>
+
+  <div class="section-title">
+    <div class="title-main" contenteditable="true">Office of the Secretary of State</div>
+    <div class="title-sub" contenteditable="true">Certificate of Filing</div>
+    <div class="title-sub2" contenteditable="true">Of</div>
+  </div>
+
+  <div class="company-info">
+    <div class="name" contenteditable="true">B.O.C HOLDINGS LLC.</div>
+    <div class="id" contenteditable="true">802585679</div>
+  </div>
+
+  <div class="content" contenteditable="true">
+    The undersigned, as Secretary of State of Texas, hereby certifies that a Certificate of Amendment for the above named entity has been received in this office and has been found to conform to the applicable provisions of law.<br><br>
+    ACCORDINGLY, the undersigned, as Secretary of State, and by virtue of the authority vested in the secretary by law, hereby issues this certificate evidencing filing effective on the date shown below.
+  </div>
+
+  <div class="dates">
+    <div contenteditable="true">Dated: 11/12/2018</div>
+    <div contenteditable="true">Effective: 11/12/2018</div>
+  </div>
+
+  <div class="footer">
+    <div class="stamp"></div>
+    <div class="sign" contenteditable="true">
+      <br>Hope Andrade<br>Secretary of State
+    </div>
+  </div>
+
+  <div class="note">
+    Come visit us on the internet at <a href="http://www.sos.state.tx.us">http://www.sos.state.tx.us</a>
+  </div>
+
+  <div class="contact">
+    <div contenteditable="true">Phone: (512) 463‑5555<br>Prepared by: Laura Rhinehart</div>
+    <div contenteditable="true">Fax: (512) 463‑5709<br>TID: 10303</div>
+    <div contenteditable="true" style="text-align:right;">Dial: 7‑1‑1 for Relay Services<br>Document: 319319590002</div>
+  </div>
+</div>
+
+<div class="btn-download">
+  <button onclick="generateImage()">生成图片</button>
+</div>
+
+<script>
+  function generateImage() {
+    html2canvas(document.querySelector("#capture"), { useCORS: true }).then(canvas => {
+      const link = document.createElement('a');
+      link.download = 'certificate.png';
+      link.href = canvas.toDataURL();
+      link.click();
+    });
+  }
+</script>
+
 </body>
 </html>
