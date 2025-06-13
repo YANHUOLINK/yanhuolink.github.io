@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editable Certificate</title>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <style>
+    body {
+      font-family: "Times New Roman", serif;
+      background: #eee;
+      padding: 30px;
+      margin: 0;
+    }
+    #capture {
+      width: 816pt;
+      background: white;
+      padding: 60pt 70pt;
+      box-sizing: border-box;
+      margin: 0 auto;
+      position: relative;
+    }
+    .header, .section-title, .company-info, .content, .dates, .footer, .note, .contact {
+      margin-bottom: 20pt;
+    }
+    [contenteditable="true"] {
+      outline: 1px dashed #ccc;
+      padding: 2px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12pt;
+      line-height: 14pt;
+    }
+    .seal img {
+      display: block;
+      margin: 30pt auto 10pt;
+      width: 80pt;
+      height: 80pt;
+    }
+    .section-title {
+      text-align: center;
+      font-weight: bold;
+    }
+    .section-title .title-main { font-size: 16pt; }
+    .section-title .title-sub { font-size: 14pt; text-transform: uppercase; }
+    .section-title .title-sub2 { font-size: 12pt; text-transform: uppercase; font-weight: normal; }
+    .company-info { text-align: center; }
+    .company-info .name { font-size: 16pt; font-weight: bold; }
+    .company-info .id { font-size: 14pt; }
+    .content { font-size: 12pt; line-height: 18pt; text-align: justify; }
+    .dates { font-size: 12pt; line-height: 16pt; }
+    .footer { display: flex; justify-content: space-between; }
+    .footer .stamp {
+      width: 100pt; height: 100pt;
+      background: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...') center center no-repeat;
+      background-size: contain;
+    }
+    .note { font-size: 10pt; font-style: italic; text-align: center; line-height: 12pt; }
+    .contact { display: flex; justify-content: space-between; font-size: 10pt; line-height: 12pt; }
+    .btn-download { text-align: center; margin-top: 30px; }
+    button { padding: 10px 20px; font-size: 14pt; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div id="capture">
+    <div class="header">
+      <div contenteditable="true">Corporations Section<br>P.O. Box 13697<br>Austin, Texas 78711‑3697</div>
+      <div contenteditable="true" style="text-align: right;">Hope Andrade<br>Secretary of State</div>
+    </div>
+    <div class="seal">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD..." alt="Seal">
+    </div>
+    <div class="section-title">
+      <div class="title-main" contenteditable="true">Office of the Secretary of State</div>
+      <div class="title-sub" contenteditable="true">CERTIFICATE OF FILING</div>
+      <div class="title-sub2" contenteditable="true">Of</div>
+    </div>
+    <div class="company-info">
+      <div class="name" contenteditable="true">B.O.C HOLDINGS LLC.</div>
+      <div class="id" contenteditable="true">802585679</div>
+    </div>
+    <div class="content" contenteditable="true">
+      The undersigned, as Secretary of State of Texas, hereby certifies that a Certificate of Amendment...
+    </div>
+    <div class="dates">
+      <div contenteditable="true">Dated: 11/12/2018</div>
+      <div contenteditable="true">Effective: 11/12/2018</div>
+    </div>
+    <div class="footer">
+      <div class="stamp"></div>
+      <div class="sign" contenteditable="true">
+        <br>Hope Andrade<br>Secretary of State
+      </div>
+    </div>
+    <div class="note">Come visit us on the internet at <a href="http://www.sos.state.tx.us">http://www.sos.state.tx.us</a></div>
+    <div class="contact">
+      <div contenteditable="true">Phone: …</div>
+      <div contenteditable="true">Fax: … TID: …</div>
+      <div contenteditable="true" style="text-align:right">Dial: … Document: …</div>
+    </div>
+  </div>
+  <div class="btn-download"><button onclick="generateImage()">生成图片</button></div>
+  <script>
+    function generateImage() {
+      html2canvas(document.querySelector("#capture"), { useCORS:true }).then(canvas => {
+        let link = document.createElement('a');
+        link.download = 'certificate.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>
